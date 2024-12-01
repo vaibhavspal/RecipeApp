@@ -1,11 +1,16 @@
 {% extends 'recipes/base.html' %}
-
+{% load static %}
     {% block content%}
 
     <h1>RECIPE {{object.id}}</h1>
    
 
         <div class="card my-4" style="width: 18rem;">
+          {% if object.image %}
+            <img src="{{ object.image.url }}" class="card-img-top" alt="{{ object.title }}">
+            {% else %}
+            <img src="{% static 'default_image.jpg' %}" class="card-img-top" alt="Default Image">
+            {% endif %}
             <div class="card-body">
               <h5 class="card-title">{{object.title}}</h5>
               <h6 class="card-subtitle mb-2 text-body-secondary">{{object.author}}</h6>
